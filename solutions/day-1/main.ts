@@ -17,12 +17,11 @@ try {
       return [left, right];
     });
 
-  const sortedLeftList = arrayOfNumbers
-    .map((pair) => pair[0])
-    .sort((a, b) => a - b);
-  const sortedRightList = arrayOfNumbers
-    .map((pair) => pair[1])
-    .sort((a, b) => a - b);
+  const leftList = arrayOfNumbers.map((pair) => pair[0]);
+  const rightList = arrayOfNumbers.map((pair) => pair[1]);
+
+  const sortedLeftList = leftList.sort((a, b) => a - b);
+  const sortedRightList = rightList.sort((a, b) => a - b);
 
   const totalDistance = sortedLeftList.reduce((sum, left, index) => {
     return sum + Math.abs(left - sortedRightList[index]);
@@ -31,9 +30,6 @@ try {
   console.log('TOTAL DISTANCE', totalDistance);
 
   // Part Two
-
-  const leftList = arrayOfNumbers.map((pair) => pair[0]);
-  const rightList = arrayOfNumbers.map((pair) => pair[1]);
 
   const similarityScore = leftList.reduce((sum, leftNum) => {
     const occurrencesInRight = rightList.filter(
